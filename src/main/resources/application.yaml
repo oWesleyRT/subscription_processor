@@ -26,3 +26,4 @@ spring:
 app:
   queues:
     subscription-created: subscription-created
+    generate-installments-requested: generate-installments-requested-queue

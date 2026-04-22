@@ -1,6 +1,7 @@
 package com.subscription_processor.domain.service;
 
 import com.subscription_processor.core.enums.SubscriptionStatus;
+import com.subscription_processor.core.messaging.GenerateInstallmentsEventPublisher;
 import com.subscription_processor.core.messaging.SubscriptionCreatedEvent;
 import com.subscription_processor.domain.SubscriptionRepository;
 import com.subscription_processor.domain.model.Subscription;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 public class SubscriptionServiceImpl implements SubscriptionService {
 
     private final SubscriptionRepository repository;
+    private final GenerateInstallmentsEventPublisher generateInstallmentsEventPublisher;
 
     @Override
     public void activate(SubscriptionCreatedEvent event) {
@@ -23,11 +25,13 @@ public class SubscriptionServiceImpl implements SubscriptionService {
         subscription.setStatus(SubscriptionStatus.ACTIVATING);
         repository.save(subscription);
 
-        for(int i=0; i<100000; i++) {
-            System.out.print("Contando I");
-        }
+        generateInstallments(subscription);
 
         subscription.setStatus(SubscriptionStatus.ACTIVE);
         repository.save(subscription);
+    }
+
+    private void generateInstallments(Subscription subscription) {
+
     }
 }
