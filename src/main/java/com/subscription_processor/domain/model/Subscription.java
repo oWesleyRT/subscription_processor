@@ -1,5 +1,6 @@
 package com.subscription_processor.domain.model;
 
+import com.subscription_processor.core.enums.PaymentMethod;
 import com.subscription_processor.core.enums.SubscriptionStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -27,7 +28,8 @@ public class Subscription {
 
     private UUID planId;
 
-    private String paymentMethod;
+    @Enumerated(EnumType.STRING)
+    private PaymentMethod paymentMethod;
 
     @Enumerated(EnumType.STRING)
     private SubscriptionStatus status;

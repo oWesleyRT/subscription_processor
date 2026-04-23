@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 @RequiredArgsConstructor
-public class SubscriptionEventConsumer {
+public class SubscriptionCreatedEventConsumer {
 
     private final SubscriptionService service;
 

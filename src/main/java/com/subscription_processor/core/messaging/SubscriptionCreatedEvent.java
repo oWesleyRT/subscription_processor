@@ -1,5 +1,6 @@
 package com.subscription_processor.core.messaging;
 
+import com.subscription_processor.core.enums.PaymentMethod;
 import com.subscription_processor.core.enums.SubscriptionStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -23,7 +24,7 @@ public class SubscriptionCreatedEvent {
 
     private String paymentMethod;
 
-    private SubscriptionStatus status;
+    private PaymentMethod status;
 
     private LocalDateTime createdAt;
 }

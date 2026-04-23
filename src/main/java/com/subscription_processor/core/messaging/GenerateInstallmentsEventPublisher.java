@@ -17,4 +17,8 @@ public class GenerateInstallmentsEventPublisher {
         this.sqsTemplate = sqsTemplate;
         this.queueName = queueName;
     }
+
+    public void publishSubscriptionGenerateInstallmentsEvent(SubscriptionGenerateInstallmentsEvent event) {
+        sqsTemplate.send(queueName, event);
+    }
 }
